@@ -261,10 +261,26 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - { name: "platform (documents)", slug: "platform", path: "./dynatrace/api/documents/document/..." }
-          - { name: "config v1 (request attributes)", slug: "config_v1", path: "./dynatrace/api/v1/config/requestattributes/..." }
-          - { name: "environment v2 (activegatetokens)", slug: "env_v2_classic_hybrid", path: "./dynatrace/api/v2/activegatetokens/..." }
-          - { name: "environment v2 (github connector)", slug: "env_v2_hybrid", path: "./dynatrace/api/app/dynatrace/github/connector/connection/..." }
+          - { name: "tests", slug: "tests", path: "./tests/..." }
+          - { name: "app", slug: "app", path: "./dynatrace/api/app/..." }
+          - { name: "automation", slug: "automation", path: "./dynatrace/api/automation/..." }
+          - { name: "cluster", slug: "cluster", path: "./dynatrace/api/cluster/..." }
+          - { name: "documents", slug: "documents", path: "./dynatrace/api/documents/..." }
+          - { name: "extensions", slug: "extensions", path: "./dynatrace/api/extensions/..." }
+          - { name: "grail", slug: "grail", path: "./dynatrace/api/grail/..." }
+          - { name: "platform", slug: "platform", path: "./dynatrace/api/platform/..." }
+          - { name: "service", slug: "service", path: "./dynatrace/api/service/..." }
+          - { name: "slo", slug: "slo", path: "./dynatrace/api/slo/..." }
+          - { name: "v1 (a-d)", slug: "v1-a-d", path: "$(go list ./dynatrace/api/v1/config/... | grep -E '^.+/dynatrace/api/v1/config/[a-d][^/]*/?')" }
+          - { name: "v1 (e-z)", slug: "v1-e-z", path: "$(go list ./dynatrace/api/v1/config/... | grep -E '^.+/dynatrace/api/v1/config/[e-z][^/]*/?')" }
+          - { name: "v2", slug: "v2", path: "./dynatrace/api/v2/..." }
+          - { name: "builtin (a-b)", slug: "builtin-a-b", path: "$(go list ./dynatrace/api/builtin/... | grep -E '^.+/dynatrace/api/builtin/[a-b][^/]*/?')" }
+          - { name: "builtin (c-e)", slug: "builtin-c-e", path: "$(go list ./dynatrace/api/builtin/... | grep -E '^.+/dynatrace/api/builtin/[c-e][^/]*/?')" }
+          - { name: "builtin (f-m)", slug: "builtin-f-m", path: "$(go list ./dynatrace/api/builtin/... | grep -E '^.+/dynatrace/api/builtin/[f-m][^/]*/?')" }
+          - { name: "builtin (n-o)", slug: "builtin-n-o", path: "$(go list ./dynatrace/api/builtin/... | grep -E '^.+/dynatrace/api/builtin/[n-o][^/]*/?')" }
+          - { name: "builtin (p-s)", slug: "builtin-p-s", path: "$(go list ./dynatrace/api/builtin/... | grep -E '^.+/dynatrace/api/builtin/[p-s][^/]*/?')" }
+          - { name: "builtin (t-z)", slug: "builtin-t-z", path: "$(go list ./dynatrace/api/builtin/... | grep -E '^.+/dynatrace/api/builtin/[t-z][^/]*/?')" }
+          - { name: "data sources", slug: "data-sources", path: "./datasources/..." }
     steps:
       - name: ⬇️ Check out code into the Go module directory
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #v7.0.1
